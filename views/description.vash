@@ -1,0 +1,14 @@
+@html.extend('layout', function (model){
+  @html.block('content', function (model){ 
+    <img id="imageU" src="#" alt="your image" style="width:100%;max-width:600px;" />
+    <br/>
+    <input id="image" type="file" name="pic" accept="image/*">
+    <br/>
+    <input id="send" value="Get Description" type="submit">
+    <br/>
+    <p id="out"></p>
+  })
+  @html.block('script', function (model){
+    <script src="/js/description.js"></script>
+  })
+})

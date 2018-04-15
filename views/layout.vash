@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Vivid</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css">
+  </head>
+
+  <body>
+    <div class="ui container page">
+      <div class="ui menuList horizontal list">
+        @{
+          if (model.user) {
+            <a class="item" href="/logout">Logout</a>
+          } else {
+            <a class="item" href="/register">Register</a>
+            <a class="item" href="/login">Login</a>
+          }
+        }
+      </div>
+      <br/>
+      @{
+        if (model.flash) {
+          if (model.flash.type === 'error') {
+            <div class="ui container">
+              <div class="ui negative floating message">
+                  @model.flash.message
+              </div>
+            </div>
+            <br/>
+          } else {
+            <div class="ui container">
+              <div class="ui success floating message">@model.flash.message</div>
+            </div>
+            <br/>
+          }
+          
+        } 
+      }
+
+       @html.block('content')
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="/js/socket.io.slim.js"></script>
+    <script src="/js/index.js"></script>
+    @html.block('script')
+  </body>
+
+</html>

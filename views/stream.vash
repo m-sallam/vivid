@@ -1,0 +1,8 @@
+@html.extend('./views/layout.vash', function (model){
+  @html.block('content', function (model){ 
+    Temp Stream PAge
+  })
+  @html.block('script', function (model){
+    <script src="/js/stream.js"></script>
+  })
+})

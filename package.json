@@ -1,0 +1,31 @@
+{
+  "name": "koa-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "koa": "^2.5.0",
+    "koa-body": "^2.5.0",
+    "koa-logger": "^3.2.0",
+    "koa-passport": "^4.0.1",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.8.1",
+    "koa-socket-2": "^1.0.17",
+    "koa-static": "^4.0.2",
+    "koa-views": "^6.1.4",
+    "mongoose": "^5.0.14",
+    "node-horseman": "^3.3.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.0",
+    "phantom": "^4.0.12",
+    "phantomjs-prebuilt": "^2.1.16",
+    "save-file": "^1.2.0",
+    "vash": "^0.12.4"
+  }
+}
