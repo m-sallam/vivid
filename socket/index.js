@@ -14,7 +14,7 @@ androidIO.on('frame', async ctx => {
 
 clientIO.on('connection', async ctx => {
   console.log('Client Connected - ', Date())
-  fs.readFile('./public/test.png', (err, data) => {
+  fs.readFile('./public/test.mp4', (err, data) => {
     if (err) return err
     console.log(data)
     let buffer = Buffer.from(data)
