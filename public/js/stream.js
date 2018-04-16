@@ -17,8 +17,7 @@ $(document).ready(function() {
     console.log(blob);
     // $("#stream-el").attr("src", blob);
 
-    objectURL = URL.createObjectURL(blob);
     var video = document.getElementById("stream-el");
-    video.src = window.URL.createObjectURL(objectURL);
+    video.src = window.URL.createObjectURL(blob);
   });
 });
