@@ -17,10 +17,14 @@ $(document).ready(function() {
     var blob = new Blob([new Uint8Array(data.frame)], {
       type: "video/mp4"
     });
+    var blobURL = window.URL.createObjectURL(blob);
+
     console.log(blob);
+    console.log(blobURL);
+
     // $("#stream-el").attr("src", blob);
 
     var video = document.getElementById("stream-el");
-    video.src = window.URL.createObjectURL(blob);
+    video.src = blobURL;
   });
 });
