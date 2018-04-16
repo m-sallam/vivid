@@ -14,10 +14,32 @@ androidIO.on('frame', async ctx => {
 
 clientIO.on('connection', async ctx => {
   console.log('Client Connected - ', Date())
-  let rd = fs.createReadStream('./public/test.mp4')
-  rd.on('data', (data) => {
-    ctx.socket.emit('frame', { frame: data })
+  fs.readFile('./public/test.png', (err, data) => {
+    if (err) return err
+    console.log(data)
+    let buffer = Buffer.from(data)
+    ctx.socket.emit('frame', { frame: buffer })
+    // fs.writeFile('./ooo.png', buffer, (err) => {
+    //   if (err) return err
+    //   console.log('blah')
+    // })
   })
+
+  // let c = 1
+  // let rd = fs.createReadStream('./public/test.mp4')
+  // rd.on('data', (data) => {
+  //   // fs.writeFile(`./${c}.mp4`, data, {}, (err, res) => {
+  //   //   if (err) {
+  //   //     console.error(err)
+  //   //     return
+  //   //   }
+  //   //   console.log('video saved')
+  //   // })
+  //   // c++
+  //   let l = fs.createWriteStream('./l.mp4')
+  //   l.write(data)
+
+  // })
 })
 
 module.exports = { androidIO: androidIO, clientIO: clientIO }
