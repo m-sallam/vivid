@@ -2,7 +2,7 @@
   @html.block('content', function (model){
     <h1>Temp Stream PAge</h1>
     <video src="" id="stream-el" width="320" height="240" controls autoplay></video>
-    <img src="" id="image-el">
+    <!-- <img src="" id="image-el"> -->
   })
   @html.block('script', function (model){
     <script src="/js/stream.js"></script>
