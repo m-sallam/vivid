@@ -13,7 +13,10 @@ $(document).ready(function() {
   socket.on("frame", function(data) {
     // console.log(data);
     // window.alert('frame sent')
-    var blob = new Blob([new Uint8Array(data.frame)]);
+    // var blob = new Blob([new Uint8Array(data.frame)]);
+    var blob = new Blob([new Uint8Array(data.frame)], {
+      type: "video/mp4"
+    });
     console.log(blob);
     // $("#stream-el").attr("src", blob);
 
