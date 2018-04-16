@@ -14,17 +14,28 @@ $(document).ready(function() {
     // console.log(data);
     // window.alert('frame sent')
     // var blob = new Blob([new Uint8Array(data.frame)]);
+
+    // var blob = new Blob([new Uint8Array(data.frame)], {
+    //   type: "video/mp4"
+    // });
+
+    // var blobURL = window.URL.createObjectURL(blob);
+
+    // console.log(blob);
+    // console.log(blobURL);
+
+    // // $("#stream-el").attr("src", blob);
+
+    // var video = document.getElementById("stream-el");
+    // video.src = blobURL;
+
     var blob = new Blob([new Uint8Array(data.frame)], {
-      type: "video/mp4"
+      type: "image/png"
     });
     var blobURL = window.URL.createObjectURL(blob);
-
     console.log(blob);
     console.log(blobURL);
-
-    // $("#stream-el").attr("src", blob);
-
-    var video = document.getElementById("stream-el");
-    video.src = blobURL;
+    var image = document.getElementById("image-el");
+    image.src = blobURL;
   });
 });
