@@ -11,9 +11,10 @@ $(document).ready(function() {
     window.alert("Android conencted to server");
   });
   socket.on("frame", function(data) {
-    console.log(data);
+    // console.log(data);
     // window.alert('frame sent')
-    console.log(new Blob([new Uint8Array(data.frame)]));
-    // $(".stream-el");
+    var blob = new Blob([new Uint8Array(data.frame)]);
+    console.log(blob);
+    $(".stream-el").attr("src", blob);
   });
 });
