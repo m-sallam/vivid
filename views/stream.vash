@@ -1,4 +1,4 @@
-@html.extend('./views/layout.vash', function (model){
+@html.extend('layout', function (model){
   @html.block('content', function (model){ 
     Temp Stream PAge
   })

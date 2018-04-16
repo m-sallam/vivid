@@ -1,5 +1,5 @@
 {
-  "name": "koa-2",
+  "name": "vivid",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -7,7 +7,7 @@
     "start": "node app.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "dotenv": "^5.0.1",
     "koa": "^2.5.0",
