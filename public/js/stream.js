@@ -1,17 +1,17 @@
 var io
 
 $(document).ready(function () {
-  const socket = io('/front')
+  const socket = io('/client')
 
   socket.on('connect', function () {
     console.log('connected to socket')
   })
   socket.on('hello', function () {
     console.log('hello')
-    document.alert('Android conencted to server')
+    window.alert('Android conencted to server')
   })
   socket.on('frame', function (data) {
     console.log(data)
-    document.alert('frame sent')
+    window.alert('frame sent')
   })
 })
