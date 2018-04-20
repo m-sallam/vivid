@@ -58,7 +58,7 @@ app.use(async (ctx, next) => {
   } catch (err) {
     console.log('error')
     console.log(err)
-    ctx.body(err)
+    ctx.body = err.message
   }
 })
 
