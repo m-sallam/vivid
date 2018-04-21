@@ -23,6 +23,17 @@ router.post('/login', async ctx => {
   }
 })
 
+router.post('/android/login', async ctx => {
+  let { user } = await User.authenticate()(ctx.request.body.username, ctx.request.body.password)
+  if (!user) {
+    ctx.body = JSON.stringify({ response: 'invalid username/password' })
+    ctx.redirect('/login')
+  } else {
+    await ctx.login(user)
+    ctx.body = JSON.stringify({ response: 'logged in' })
+  }
+})
+
 router.get('/register', async ctx => {
   if (ctx.isAuthenticated()) ctx.redirect('/')
   await ctx.render('register')
@@ -38,6 +49,17 @@ router.post('/register', async ctx => {
   await User.register(newUser, ctx.request.body.password)
   await ctx.login(newUser)
   ctx.redirect('/')
+})
+
+router.post('/android/register', async ctx => {
+  let newUser = new User({
+    username: ctx.request.body.username,
+    email: ctx.request.body.email,
+    name: ctx.request.body.name
+  })
+  await User.register(newUser, ctx.request.body.password)
+  await ctx.login(newUser)
+  ctx.body = JSON.stringify({ response: 'registered' })
 })
 
 router.get('/logout', ctx => {
