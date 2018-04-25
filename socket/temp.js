@@ -1,5 +1,7 @@
 const IO = require('koa-socket-2')
 const desIO = new IO({ namespace: 'description' })
+const vqaMIO = new IO({ namespace: 'vqa-model' })
+const vqaBIO = new IO({ namespace: 'vqa-browser' })
 // const clientIO = new IO({ namespace: 'client' })
 const save = require('save-file')
 const path = require('path')
@@ -35,6 +37,21 @@ desIO.on('reqDescription', async ctx => {
     ctx.socket.emit('description', { des: 'error eccoured, do something!' })
   }
 })
+
+vqaMIO.on('connection', async ctx => {
+  console.log('VQA Model connected - ', Date())
+})
+vqaMIO.on('answer', async ctx => {
+  vqaBIO.broadcast('answer', ctx.data)
+})
+
+vqaBIO.on('connection', async ctx => {
+  console.log('VQA browser connected - ', Date())
+})
+vqaBIO.on('question', async ctx => {
+  vqaMIO.broadcast('question', ctx.data)
+})
+
 // module.exports = function (io) {
 //   // const ioVqaFront = io.of('/vqa-front')
 //   // const ioVqaBack = io.of('/vqa-back')
@@ -86,4 +103,4 @@ desIO.on('reqDescription', async ctx => {
 // })
 // }
 
-module.exports = { desIO: desIO }
+module.exports = { desIO: desIO, vqaBIO: vqaBIO, vqaMIO: vqaMIO }

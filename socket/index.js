@@ -6,11 +6,12 @@ const clientIO = new IO({ namespace: 'client' })
 androidIO.on('connection', async ctx => {
   console.log('Android Connected', '-', Date())
   clientIO.broadcast('hello')
-  ctx.socket.emit('question')
+  ctx.socket.emit('welcome')
 })
-// androidIO.on('frame', async ctx => {
-//   clientIO.broadcast('frame', { frame: ctx.data })
-// })
+androidIO.on('frame', async ctx => {
+  // clientIO.broadcast('frame', { frame: ctx.data })
+  console.log('got it')
+})
 
 clientIO.on('connection', async ctx => {
   console.log('Client Connected - ', Date())

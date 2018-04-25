@@ -12,7 +12,7 @@ const dotenv = require('dotenv')
 const app = new Koa()
 
 const indexRouter = require('./routes/index')
-const { tempRouter, videoIO } = require('./routes/temp')
+const { tempRouter } = require('./routes/temp')
 
 const User = require('./models/user')
 
@@ -47,7 +47,8 @@ passport.deserializeUser(User.deserializeUser())
 sockets.androidIO.attach(app)
 sockets.clientIO.attach(app)
 tempSockets.desIO.attach(app)
-videoIO.attach(app)
+tempSockets.vqaBIO.attach(app)
+tempSockets.vqaMIO.attach(app)
 
 app.use(async (ctx, next) => {
   try {

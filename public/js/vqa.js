@@ -1,7 +1,7 @@
 var io
 
 $(document).ready(function () {
-  const vqaSocket = io('/vqa-front')
+  const vqaSocket = io('/vqa-browser')
 
   vqaSocket.on('connect', function () {
     console.log('connected to socket')
