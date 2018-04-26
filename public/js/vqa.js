@@ -22,6 +22,6 @@ $(document).ready(function () {
   })
 
   $('#send').on('click', function () {
-    vqaSocket.emit('question', { pic: $('#image')[0].files[0], question: $('#question').val() })
+    vqaSocket.emit('question', { pic: $('#image')[0].files[0], question: $('#question').val(), extension: $('#image')[0].files[0].name.split('.')[$('#image')[0].files[0].name.split('.').length - 1] })
   })
 })
