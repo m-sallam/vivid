@@ -45,6 +45,8 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
     <script src="/js/socket.io.slim.js"></script>
+    <script src="/js/artyom.window.min.js"></script>
+    <script src="/js/artyom.js"></script>
     <script src="/js/index.js"></script>
     @html.block('script')
   </body>

@@ -1,0 +1,24 @@
+HTML Client:
+  - voice commands
+  - video chat
+  - login/register
+
+Android Client:
+  - voice commands
+  - connecting between voice commands response and the rest of the app
+  - video chat
+  - login/register
+
+Web Interface:
+  - landing page
+  - dashboard
+
+Backend:
+  - API for HTML/Android client
+  - API for Web interface
+  - handling video chat
+  ✔ caption scrapping @done(18-06-10 16:03)
+
+AI:
+  ✔ vqa model???? @done(18-06-10 16:02)
+  ✘ caption model????!!??! @cancelled(18-06-10 16:02)
