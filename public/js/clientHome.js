@@ -53,11 +53,7 @@ $(document).ready(function () {
   v.addCommands(command)
 
   v.redirectRecognizedTextOutput(function (recognized, isFinal) {
-    if (isFinal) {
-      console.log('Final recognized text: ' + recognized)
-    } else {
-      $('#text').html(recognized)
-    }
+    $('#text').html(recognized)
   })
 
   v.initialize({
