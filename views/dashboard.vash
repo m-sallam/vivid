@@ -1,0 +1,8 @@
+@html.extend('layout', function (model){
+  @html.block('content', function (model){ 
+    <input id="user" type="hidden" value="@JSON.stringify(model.currentUser)">
+  })
+  @html.block('script', function (model){
+    <script src="/js/volunteerdashboard.js"></script>
+  })
+})

@@ -1,36 +1,86 @@
 const IO = require('koa-socket-2')
-const fs = require('fs')
-const androidIO = new IO({ namespace: 'android' })
+const save = require('save-file')
+const path = require('path')
+const Horseman = require('node-horseman')
+const volunteerIO = new IO({ namespace: 'volunteer' })
 const clientIO = new IO({ namespace: 'client' })
+const vqaIO = new IO({ namespace: 'vqa-model' })
+const { insertConnectedVolunteer, removeDisconnectedVolunteer, insertConnectedClient, removeDisconnectedClient } = require('../middleware')
 
-androidIO.on('connection', async ctx => {
-  console.log('Android Connected', '-', Date())
-  clientIO.broadcast('hello')
-  ctx.socket.emit('welcome')
+volunteerIO.on('connection', async ctx => {
+  console.log('Volunteer connected -', Date())
 })
-androidIO.on('frame', async ctx => {
-  // clientIO.broadcast('frame', { frame: ctx.data })
-  console.log('got it')
+
+volunteerIO.on('initialize', async ctx => {
+  var user = ctx.data.user
+  user.socketId = ctx.socket.id
+  insertConnectedVolunteer(user)
 })
+
+volunteerIO.on('disconnect', async ctx => {
+  removeDisconnectedVolunteer(ctx.socket.id)
+  console.log('Volunteer disconnected -', Date())
+})
+
+// ------------------ client sockets ----------------------------
 
 clientIO.on('connection', async ctx => {
   console.log('Client Connected - ', Date())
-  // fs.readFile('./public/test.mp4', (err, data) => {
-  //   if (err) return err
-  //   console.log(data)
-  //   let buffer = Buffer.from(data)
-  //   ctx.socket.emit('frame', { frame: buffer })
-  //   fs.writeFile('./ooo.png', buffer, (err) => {
-  //     if (err) return err
-  //     console.log('blah')
-  //   })
-  // })
-  // let ch = []
-  let rs = fs.createReadStream('./public/test.mp4', { encoding: 'binary' })
-  rs.on('data', (data) => {
-    console.log('emitting')
-    ctx.socket.emit('frame', { frame: data })
-  })
 })
 
-module.exports = { androidIO: androidIO, clientIO: clientIO }
+clientIO.on('initialize', async ctx => {
+  var user = ctx.data.user
+  user.socketId = ctx.socket.id
+  insertConnectedClient(user)
+})
+
+clientIO.on('disconnect', async ctx => {
+  removeDisconnectedClient(ctx.socket.id)
+  console.log('client disconnected - ', Date())
+})
+
+clientIO.on('requestAssistance', async ctx => {
+  let response = { volunteerAvailable: true, roomId: 'random generated id here' }
+  ctx.socket.emit('assistance', { response: response })
+})
+
+clientIO.on('requestDescription', async ctx => {
+  try {
+    await save(ctx.data.pic, 'pic.png')
+    const horseman = new Horseman({ loadImages: false })
+    horseman
+      .open('https://www.captionbot.ai')
+      .upload('#idImageUploadField', path.join(__dirname, 'pic.png'))
+      .waitFor({
+        fn: function waitForSelectorCount (selector) {
+          return $(selector).text().length > 30
+        },
+        args: ['#captionLabel'],
+        value: true,
+        timeout: 20000
+      })
+      .text('#captionLabel')
+      .then((out) => {
+        console.log(out, Date())
+        ctx.socket.emit('description', { description: out })
+      })
+      .close()
+  } catch (err) {
+    console.log(err)
+    ctx.socket.emit('description', { description: 'sorry, an error occured, try again' })
+  }
+})
+
+clientIO.on('requestVQA', async ctx => {
+  vqaIO.broadcast('question', { pic: ctx.data.pic, question: ctx.data.question, socketId: ctx.socket.id })
+})
+
+// vqa model sockets
+vqaIO.on('connection', async ctx => {
+  console.log('VQA Model connected - ', Date())
+})
+vqaIO.on('answer', async ctx => {
+  clientIO.to(ctx.data.socketId).emit('VQA', { answer: ctx.data.out })
+})
+
+module.exports = { volunteerIO: volunteerIO, clientIO: clientIO, vqaIO: vqaIO }

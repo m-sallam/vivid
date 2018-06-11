@@ -1,17 +1,20 @@
 @html.extend('layout', function (model){
   @html.block('content', function (model){ 
     <div class="ui text container">
-    
+
       <form id="loginForm" class="ui form" method="POST">
         <h1>Login</h1>
         <br/>
+        <h3>username: user</h3>
+        <h3>password: password</h3>
+        <h3>shh, don't tell anyone</h3>
         <div class="field">
           <label>Username</label>
-          <input class="" type="text" name="username" placeholder="Username">
+          <input class="" type="text" name="username" placeholder="Username" value="user">
         </div> 
         <div class="field">
           <label>Password</label>
-          <input type="password" name="password" placeholder="Password">
+          <input type="password" name="password" placeholder="Password" value="password">
         </div>
         <button class="ui fluid button" type="submit">Submit</button>
       </form>

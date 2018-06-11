@@ -5,7 +5,10 @@ var Schema = mongoose.Schema
 var userSchema = new Schema({
   username: { type: String, required: true, unique: true, min: 5, max: 32, lowercase: true },
   name: { type: String, required: true },
-  email: { type: String, required: true, unique: true }
+  email: { type: String, required: true, unique: true },
+  country: { type: String, required: true },
+  languages: [{ type: String, required: true }],
+  type: { type: String, required: true }
 })
 userSchema.plugin(passportLocalMongoose)
 var userModel = mongoose.model('User', userSchema)
