@@ -84,6 +84,7 @@ $(document).ready(function () {
 
         cameras.forEach(function (camera) {
           // Search back camera on the device
+          alert(camera.label, camera.deviceId)
           if (camera.label.toLowerCase().search('back') > -1) {
             deviceId = camera.deviceId
           }
@@ -103,15 +104,14 @@ $(document).ready(function () {
             facingMode: 'environment'
           }
         }
-
       })
       .catch(function (error) {
         console.log(error)
       })
   }
+  console.log(webcamOptions)
   Webcam.set(webcamOptions)
   Webcam.attach('#my_camera')
-
 
   // var UserDictation = v.newDictation({
   //   continuous: true, // Enable continuous if HTTPS connection
