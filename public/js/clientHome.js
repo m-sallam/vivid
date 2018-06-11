@@ -51,6 +51,15 @@ $(document).ready(function () {
   }
 
   v.addCommands(command)
+
+  v.redirectRecognizedTextOutput(function (recognized, isFinal) {
+    if (isFinal) {
+      console.log('Final recognized text: ' + recognized)
+    } else {
+      $('#text').html(recognized)
+    }
+  })
+
   v.initialize({
     continuous: true,
     lang: 'en-US',
@@ -58,9 +67,9 @@ $(document).ready(function () {
     debug: true
   })
 
-  setTimeout(function () {
-    v.simulateInstruction('hey V is there is a man in this picture')
-  }, 5000)
+  // setTimeout(function () {
+  //   v.simulateInstruction('hey V is there is a man in this picture')
+  // }, 5000)
 
   var webcamOptions = {
     width: 320,
@@ -84,7 +93,6 @@ $(document).ready(function () {
 
         cameras.forEach(function (camera) {
           // Search back camera on the device
-          alert(camera.label + '-------' + camera.deviceId)
           if (camera.label.toLowerCase().search('back') > -1) {
             deviceId = camera.deviceId
           }
@@ -109,27 +117,8 @@ $(document).ready(function () {
         console.log(error)
       })
       .finally(function () {
-        alert(webcamOptions)
         Webcam.set(webcamOptions)
         Webcam.attach('#my_camera')
       })
   }
-
-
-
-  // var UserDictation = v.newDictation({
-  //   continuous: true, // Enable continuous if HTTPS connection
-  //   onResult: function (text) {
-  //     // Do something with the text
-  //     $('#text').html(text)
-  //   },
-  //   onStart: function () {
-  //     console.log('Dictation started by the user')
-  //   },
-  //   onEnd: function () {
-  //     alert('Dictation stopped by the user')
-  //   }
-  // })
-
-  // UserDictation.start()
 })
