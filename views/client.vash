@@ -1,6 +1,6 @@
 @html.extend('layout', function (model){
   @html.block('content', function (model){ 
-    <div id="my_camera"></div>
+    // <div id="my_camera"></div>
     <h5>hey v, what is this  ===> image caption</h5>
     <h5>hey v, [quuestion]  ===> vqa</h5>
     <h5>hey v, [sentence containing the word 'help']  ===> video chat (will not transfer you yet,, though)</h5>

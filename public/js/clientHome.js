@@ -62,30 +62,105 @@ $(document).ready(function () {
     v.simulateInstruction('hey V, is there is a man in this picture')
   }, 5000)
 
-  Webcam.set({
-    width: 320,
-    height: 240,
-    image_format: 'jpeg',
-    jpeg_quality: 90
-  })
-  if (Webcam.cameraIDs.length > 1) {
-    Webcam.cameraID = 1
+  // var webcamOptions = {
+  //   width: 320,
+  //   height: 240,
+  //   image_format: 'jpeg',
+  //   jpeg_quality: 100
+  // }
+  // // `enumerateDevices` is a method for getting all available media devices
+  // if (typeof navigator.mediaDevices.enumerateDevices === 'undefined') {
+  //   // if method `enumerateDevices` doesn't support on the device we just run webcam
+  //   Webcam.set(webcamOptions)
+  // } else {
+  //   navigator.mediaDevices.enumerateDevices()
+  //     .then(function (devices) {
+  //       // Get all cameras on the device
+  //       var cameras = devices.filter(function (device) {
+  //         return device.kind === 'videoinput'
+  //       })
+
+  //       var deviceId = null
+
+  //       cameras.forEach(function (camera) {
+  //         // Search back camera on the device
+  //         if (camera.label.toLowerCase().search('back') > -1) {
+  //           deviceId = camera.deviceId
+  //         }
+  //       })
+
+  //       // If we don't find the back camera we use last camera in the list
+  //       if (!deviceId && cameras.length) {
+  //         deviceId = cameras[cameras.length - 1].deviceId
+  //       }
+
+  //       if (deviceId) {
+  //         // If we have `deviceId` of a camera we run webcam with the following params:
+  //         webcamOptions.constraints = {
+  //           deviceId: {
+  //             exact: deviceId
+  //           },
+  //           facingMode: 'environment'
+  //         }
+  //       }
+
+  //       Webcam.set(webcamOptions)
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error)
+  //     })
+  // }
+  // Webcam.attach('#my_camera')
+
+  let handleStream = s => {
+    document.body.append(
+      Object.assign(document.createElement('video'), {
+        autoplay: true,
+        mozSrcObject: s,
+        srcObject: s,
+        id: 'vid'
+      })
+    )
   }
-  Webcam.attach('#my_camera')
 
-  var UserDictation = v.newDictation({
-    continuous: true, // Enable continuous if HTTPS connection
-    onResult: function (text) {
-      // Do something with the text
-      $('#text').html(text)
-    },
-    onStart: function () {
-      console.log('Dictation started by the user')
-    },
-    onEnd: function () {
-      alert('Dictation stopped by the user')
+  navigator.mediaDevices.enumerateDevices().then(
+    function (devices) {
+      let sourceId = null
+      // enumerate all devices
+      for (var device of devices) {
+        // if there is still no video input, or if this is the rear camera
+        if (device.kind === 'videoinput' &&
+          (!sourceId || device.label.indexOf('back') !== -1)) {
+          sourceId = device.deviceId
+        }
+      }
+      // we didn't find any video input
+      if (!sourceId) {
+        console.log('no input')
+      }
+      let constraints = {
+        video: {
+          sourceId: sourceId
+        }
+      }
+      navigator.mediaDevices.getUserMedia(constraints)
+        .then(handleStream)
     }
-  })
+  )
 
-  UserDictation.start()
+  // var UserDictation = v.newDictation({
+  //   continuous: true, // Enable continuous if HTTPS connection
+  //   onResult: function (text) {
+  //     // Do something with the text
+  //     $('#text').html(text)
+  //   },
+  //   onStart: function () {
+  //     console.log('Dictation started by the user')
+  //   },
+  //   onEnd: function () {
+  //     alert('Dictation stopped by the user')
+  //   }
+  // })
+
+  // UserDictation.start()
 })
