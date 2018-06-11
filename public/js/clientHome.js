@@ -31,7 +31,7 @@ $(document).ready(function () {
   v.say('Hi, i am v, use hey v for commands')
 
   var command = {
-    indexes: ['hey V, *'],
+    indexes: ['hey V *'],
     smart: true,
     action: function (i, wildcard) {
       if (wildcard.includes('help')) {
@@ -59,7 +59,7 @@ $(document).ready(function () {
   })
 
   setTimeout(function () {
-    v.simulateInstruction('hey V, is there is a man in this picture')
+    v.simulateInstruction('hey V is there is a man in this picture')
   }, 5000)
 
   var webcamOptions = {
@@ -84,7 +84,7 @@ $(document).ready(function () {
 
         cameras.forEach(function (camera) {
           // Search back camera on the device
-          alert(camera.label, camera.deviceId)
+          alert(camera.label + '-------' + camera.deviceId)
           if (camera.label.toLowerCase().search('back') > -1) {
             deviceId = camera.deviceId
           }
@@ -108,10 +108,14 @@ $(document).ready(function () {
       .catch(function (error) {
         console.log(error)
       })
+      .finally(function () {
+        alert(webcamOptions)
+        Webcam.set(webcamOptions)
+        Webcam.attach('#my_camera')
+      })
   }
-  console.log(webcamOptions)
-  Webcam.set(webcamOptions)
-  Webcam.attach('#my_camera')
+
+
 
   // var UserDictation = v.newDictation({
   //   continuous: true, // Enable continuous if HTTPS connection
