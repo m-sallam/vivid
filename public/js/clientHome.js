@@ -68,6 +68,9 @@ $(document).ready(function () {
     image_format: 'jpeg',
     jpeg_quality: 90
   })
+  if (Webcam.cameraIDs.length > 1) {
+    Webcam.cameraID = 1
+  }
   Webcam.attach('#my_camera')
 
   var UserDictation = v.newDictation({
