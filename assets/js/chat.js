@@ -1,22 +1,51 @@
 var SimplePeer
 var io
+
 $('document').ready(function () {
+  var options = null
   const roomId = 'room_' + window.location.pathname.split('/')[2]
   const socket = io('/chat')
   socket.on('connect', function () {
     socket.emit('join', roomId)
   })
-
   socket.on('firstParty', function () {
     console.log('first party')
-    navigator.getUserMedia({ video: { facingMode: { exact: 'environment' } }, audio: true }, gotMedia, function () { })
+    setMedia()
   })
 
   socket.on('secondParty', function () {
     console.log('second party')
     socket.emit('rejoin', roomId)
-    navigator.getUserMedia({ video: true, audio: true }, gotMedia, function () { })
+    setMedia()
   })
+
+  function setMedia () {
+    navigator.mediaDevices.enumerateDevices()
+      .then(function (devices) {
+        // Get all cameras on the device
+        var cameras = devices.filter(function (device) {
+          return device.kind === 'videoinput'
+        })
+
+        cameras.forEach(function (camera) {
+          // Search back camera on the device
+          if (camera.label.toLowerCase().search('back') > -1) {
+            options = { video: { facingMode: { exact: 'environment' } }, audio: true }
+          }
+        })
+
+        // If we don't find the back camera we use last camera in the list
+        if (!options && cameras.length) {
+          options = { video: true, audio: true }
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+      .finally(function () {
+        navigator.getUserMedia(options, gotMedia, function () { })
+      })
+  }
 
   function gotMedia (stream) {
     var peer = new SimplePeer({ initiator: window.location.hash === '#1', stream: stream })
