@@ -9,6 +9,14 @@ $(document)
         }
       })
 
+    $('.text-input').each(function () {
+      if ($(this).val()) {
+        $(this).addClass('notEmpty')
+      } else {
+        $(this).removeClass('notEmpty')
+      }
+    })
+
     if ($('#languages-select').length > 0) {
       $('#languages-select').selectize({
         // placeholder: "Languages"
