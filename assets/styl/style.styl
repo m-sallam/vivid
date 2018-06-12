@@ -1,0 +1,371 @@
+$dark-primary-color = #643A92
+$light-primary-color = #D1C4E9
+$primary-color = #673AB7
+$text-icon-color = #FFFFFF
+$accent-color = #FB3392
+$primary-text = #212121
+$secondary-text = #757575
+$divider-color = #BDBDBD
+
+
+
+body
+  font-family 'Roboto', sans-serif
+  font-weight: 400
+  background-color #F4F5F9
+
+.container-fluid
+  padding 0
+
+.header
+  overflow hidden
+  background-color $dark-primary-color
+
+.navbar
+  background-color $dark-primary-color
+  padding-left: 0
+  padding-right: 0
+  .navbar-toggler
+    width: 20px
+    padding: 0
+    font-size: 1rem
+    border-radius: 0
+    border: none
+    &:focus
+      outline: none
+    .bar
+      background-color: #fff
+      width 20px
+      height 3px
+      display: block
+      &:not(:first-of-type)
+        margin-top 3px
+    .bar
+      transition: all .75s ease
+    &.open
+      .bar:not(:first-of-type)
+        margin-top: 3.5px
+      .bar:first-child
+        transform: rotate(45deg)
+        transform-origin: 0 0
+      .bar:nth-child(2)
+        opacity: 0
+      .bar:last-child
+        transform: rotate(-45deg)
+        transform-origin: 0 100%;
+  .navbar-brand
+    color $text-icon-color
+    font-size: 30px
+    font-weight: 900
+  .navbar-nav
+    margin-left 30px
+  .nav-item
+    .nav-link
+      color rgba($text-icon-color, .5)
+      font-weight: 300
+      transition: all .2s ease
+    &.active
+      .nav-link
+        color rgba($text-icon-color, 1)
+    &:hover
+      .nav-link
+        color rgba($text-icon-color, .5)
+    &.hovered
+      .nav-link
+        color rgba($text-icon-color, 1)
+
+
+.master-content
+  padding 30px 0 0 0
+
+.generic-card
+  border-radius: 2px
+  overflow hidden
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+  background-color: #fff;
+  position relative
+
+.vivid-card-header
+  // background-color: #FAFAFA
+  padding 15px
+  border-bottom: 2px solid rgba($divider-color, .5)
+  margin-bottom: 20px
+.section-title
+  font-weight: 300
+  font-size: 20px
+  margin-bottom: 0
+  color $primary-text
+  // padding 15px 15px 0 15px
+.user-listing
+  // padding 15px
+  border-radius: 2px
+  overflow hidden
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+  background-color: #fff;
+  position relative
+  margin-bottom: 30px
+  .vivid-card-header
+    background-color: #009688
+    border none
+    .section-title
+      color #fff
+  .users-scroller
+    padding 0 15px 15px 15px
+    // max-height: 500px
+    height: 420px
+    position relative
+    // display: flex
+    // flex-direction: column
+    // justify-content: center
+    .empty-label
+      position absolute
+      top calc(50% - 30px)
+      left 50%
+      transform translate(-50%, -50%)
+      text-align: center
+  .scroller-gradient
+    width 100%
+    height 60px
+    position: absolute
+    bottom 0
+    left 0
+    z-index 999
+    background: rgba(240,47,23,0);
+    background: -moz-linear-gradient(top, rgba(240,47,23,0) 0%, rgba(255,255,255,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(240,47,23,0)), color-stop(100%, rgba(255,255,255,1)));
+    background: -webkit-linear-gradient(top, rgba(240,47,23,0) 0%, rgba(255,255,255,1) 100%);
+    background: -o-linear-gradient(top, rgba(240,47,23,0) 0%, rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(top, rgba(240,47,23,0) 0%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(to bottom, rgba(240,47,23,0) 0%, rgba(255,255,255,1) 100%);
+    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f02f17', endColorstr='#ffffff', GradientType=0 );
+  .user
+    display flex
+    flex-direction row
+    flex-wrap nowrap
+    justify-content: start
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1)
+    border-radius: 2px
+    overflow hidden
+    padding 15px
+    position: relative
+    // cursor pointer
+    &:hover
+      box-shadow: 0 7px 14px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22)
+    &:not(:last-of-type)
+      margin-bottom: 15px
+    .user-img
+      display flex
+      flex-direction column
+      justify-content start
+      margin-right 15px
+      img
+        height 64px
+    .user-info
+      display flex
+      flex-direction column
+      justify-content center
+      position relative
+      flex-grow: 1
+      .user-name
+        font-size: 16px
+        position relative
+        padding-right 50px
+        color $primary-text
+        margin-bottom: 5px
+      .user-country
+        margin: 0
+        font-size: 12px
+        color $secondary-text
+        position absolute
+        top 4px
+        right 0
+      .user-status
+        margin: 0
+        font-size: 14px
+        color $secondary-text
+        position absolute
+        top 4px
+        right 0
+        color #009688
+        text-transform: uppercase
+      .user-lang, .user-date
+        font-size: 12px
+        color $secondary-text
+        margin 0
+        font-weight: 300
+      .user-lang
+        margin-bottom 5px
+    .hover-board
+      width 100%
+      height 100%
+      background-color: rgba(#fff, .8)
+      position: absolute
+      top 0
+      right 0
+      opacity: 0
+      transition: all .3s ease
+    .connect-btn
+      color: #fff
+      background-color: #009688
+      padding: 5px 11px
+      margin: 0
+      text-decoration: none
+      text-align: center
+      height 100%
+      width: 80px
+      border-radius: 2px
+      // margin-top 15px
+      position: absolute
+      top 50%
+      transform: translateY(-50%)
+      right -80px
+      z-index 99
+      transition: all .3s ease-out
+      display: flex
+      flex-direction: column
+      justify-content: center
+      i
+        margin-bottom 3px
+    &:hover
+      .hover-board
+        // right: 0
+        opacity 1
+      .connect-btn
+        right 0
+
+
+.notification-center
+  margin-bottom: 30px
+.notification
+  border-radius: 2px
+  overflow hidden
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+  background-color: #fff;
+  position relative
+  padding 15px
+  &:not(:last-of-type)
+    margin-bottom: 15px
+  &-color-label
+    height 100%
+    width 5px
+    position absolute
+    top 0
+    left 0
+  &-text
+    display: flex
+    flex-direction: column
+    justify-content: center
+    h3
+      font-weight: 300
+      font-size: 18px
+      margin-bottom 5px
+      i
+        margin-right 10px
+    p
+      font-weight: 300
+      font-size: 14px
+      margin 0
+      line-height: 1.2
+  &.default-color
+    .notification-color-label
+      background-color: $accent-color
+    .notification-text
+      h3
+        color $accent-color
+  &.green-color
+    .notification-color-label
+      background-color: #4FE3C1
+    .notification-text
+      h3
+        color #4FE3C1
+  &.red-color
+    .notification-color-label
+      background-color: #FF5252
+    .notification-text
+      h3
+        color #FF5252
+
+.known-people
+  .vivid-card-header
+    background-color: $dark-primary-color
+    border none
+    .section-title
+      color #fff
+  .connect-btn
+      background-color: $dark-primary-color !important
+
+.charts-view
+  margin-bottom: 30px
+  .vivid-card-header
+    background-color: #303F9F
+    border none
+    .section-title
+      color #fff
+
+
+.gadgets
+  margin-bottom: 30px
+  .gadget
+    border-radius: 2px
+    overflow hidden
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+    background-color: #fff;
+    position relative
+    display: flex
+    flex-direction: row
+    margin-bottom: 15px
+    // padding 15px
+    .icon
+      padding 5px 30px
+      background-color: $accent-color
+      color #fff
+      font-size: 70px
+    .data
+      padding 15px
+    .number
+      font-size: 36px
+      font-weight: 900
+      line-height: 1
+      color $accent-color
+    .text
+      font-size: 14px
+      font-weight: 300
+      line-height: 1.2
+      margin 0
+    &.online-clients
+      .icon
+        background-color: $accent-color
+      .number
+        color $accent-color
+    &.online-volunteers
+      .icon
+        background-color: #448AFF
+        padding 5px 13px
+      .number
+        color #448AFF
+
+.profile-card
+  margin-bottom: 30px
+  .vivid-card-header
+    background-color: #303F9F
+    border none
+    .section-title
+      color #fff
+  .data
+    text-align: center
+    padding 30px 0
+    .profile-img
+      margin-bottom: 15px
+      img
+        max-width: 128px
+    .stats
+      margin-bottom 8px
+    .user-rating
+      text-align: center
+      margin 0 auto
+      margin-bottom: 15px
+
+@media(max-width 768px)
+  .navbar-nav.mr-auto
+    margin 0

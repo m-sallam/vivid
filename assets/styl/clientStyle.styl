@@ -1,0 +1,142 @@
+$dark-primary-color = #643A92
+$light-primary-color = #D1C4E9
+$primary-color = #673AB7
+$text-icon-color = #FFFFFF
+$accent-color = #FB3392
+$primary-text = #212121
+$secondary-text = #757575
+$divider-color = #BDBDBD
+
+
+
+body
+  font-family 'Roboto', sans-serif
+  font-weight: 400
+  background-color #F4F5F9
+
+.container-fluid
+  padding 0
+
+.header
+  overflow hidden
+  background-color $dark-primary-color
+.navbar
+  background-color $dark-primary-color
+  padding-left: 0
+  padding-right: 0
+  .navbar-toggler
+    width: 20px
+    padding: 0
+    font-size: 1rem
+    border-radius: 0
+    border: none
+    &:focus
+      outline: none
+    .bar
+      background-color: #fff
+      width 20px
+      height 3px
+      display: block
+      &:not(:first-of-type)
+        margin-top 3px
+    .bar
+      transition: all .75s ease
+    &.open
+      .bar:not(:first-of-type)
+        margin-top: 3.5px
+      .bar:first-child
+        transform: rotate(45deg)
+        transform-origin: 0 0
+      .bar:nth-child(2)
+        opacity: 0
+      .bar:last-child
+        transform: rotate(-45deg)
+        transform-origin: 0 100%;
+  .navbar-brand
+    color $text-icon-color
+    font-size: 30px
+    font-weight: 900
+  .navbar-nav
+    margin-left 30px
+  .nav-item
+    .nav-link
+      color rgba($text-icon-color, .5)
+      font-weight: 300
+      transition: all .2s ease
+    &.active
+      .nav-link
+        color rgba($text-icon-color, 1)
+    &:hover
+      .nav-link
+        color rgba($text-icon-color, 1)
+    &.hovered
+      .nav-link
+        color rgba($text-icon-color, 1)
+
+
+.master-content
+  padding 30px 0 0 0
+
+
+.generic-card
+  border-radius: 2px
+  overflow hidden
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+  background-color: #fff;
+  position relative
+
+.vivid-card-header
+  // background-color: #FAFAFA
+  padding 15px
+  border-bottom: 2px solid rgba($divider-color, .5)
+  margin-bottom: 20px
+.section-title
+  font-weight: 300
+  font-size: 20px
+  margin-bottom: 0
+  color $primary-text
+
+
+.master-content
+  &.clientUI
+    .main-title
+      font-weight: 100
+      font-size: 36px
+      text-align: center
+    .recognized-text-cont
+      text-align: center
+      padding: 15px
+      .recognized-text
+        font-weight: 400
+    .commands
+      border-radius: 2px
+      overflow hidden
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+      background-color: #fff;
+      position relative
+      margin-top: 15px
+      margin-bottom: 30px
+      // padding 15px
+      .vivid-card-header
+        border none
+        background-color: $dark-primary-color
+        .section-title
+          color #fff
+      .command-row
+        padding 15px
+        &:not(:last-of-type)
+          border-bottom: 1px solid $divider-color
+        .command-name
+          color $dark-primary-color
+          font-weight: 400
+          font-size 18px
+        .command-description
+          color $primary-text
+          font-weight: 300
+          font-size 18px
+
+
+
+@media(max-width 768px)
+  .navbar-nav.mr-auto
+    margin 0
