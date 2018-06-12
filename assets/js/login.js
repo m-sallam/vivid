@@ -1,17 +1,13 @@
 $(document)
   .ready(function () {
-
-    function checkInputs() {
-      if ($(this).val()) {
-        $(this).addClass('notEmpty')
-      } else {
-        $(this).removeClass('notEmpty')
-      }
-    }
-    checkInputs()
-    $('.text-input').on('focusout change', function () {
-      checkInputs()
-    })
+    $('.text-input')
+      .on('focusout change', function () {
+        if ($(this).val()) {
+          $(this).addClass('notEmpty')
+        } else {
+          $(this).removeClass('notEmpty')
+        }
+      })
 
     if ($('#languages-select').length > 0) {
       $('#languages-select').selectize({
