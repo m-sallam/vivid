@@ -9,7 +9,7 @@ $('document').ready(function () {
 
   socket.on('firstParty', function () {
     console.log('first party')
-    navigator.getUserMedia({ video: true, audio: true }, gotMedia, function () { })
+    navigator.getUserMedia({ video: { facingMode: { exact: 'environment' } }, audio: true }, gotMedia, function () { })
   })
 
   socket.on('secondParty', function () {

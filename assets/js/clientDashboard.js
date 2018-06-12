@@ -60,12 +60,14 @@ $(document).ready(function () {
     typeitInstance.delete().type(recognized)
   })
 
-  v.initialize({
-    continuous: true,
-    lang: 'en-US',
-    listen: true
-    // debug: true
-  })
+  setTimeout(function () {
+    v.initialize({
+      continuous: true,
+      lang: 'en-US',
+      listen: true
+      // debug: true
+    })
+  }, 3000)
 
   // setTimeout(function () {
   //   v.simulateInstruction('hey help')
