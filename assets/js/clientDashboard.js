@@ -48,7 +48,7 @@ $(document).ready(function () {
       } else {
         Webcam.snap(function (dataUrl) {
           v.say('processing')
-          socket.emit('requestVQA', { pic: dataUrl })
+          socket.emit('requestVQA', { pic: dataUrl, question: wildcard })
         })
       }
     }
