@@ -57,7 +57,8 @@ $(document).ready(function () {
   v.addCommands(command)
 
   v.redirectRecognizedTextOutput(function (recognized, isFinal) {
-    typeitInstance.empty().pause(500).type(recognized)
+    typeitInstance.empty()
+    typeitInstance.type(recognized)
   })
 
   setTimeout(function () {
