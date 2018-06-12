@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <meta name='description' content=''>
+  <meta name='author' content=''>
+
+  <title>Vivid</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet">
+  <link rel='stylesheet' type='text/css' href='/css/fontawesome-all.min.css'>
+  <link rel='stylesheet' type='text/css' href='/css/bootstrap.min.css'>
+  <link rel='stylesheet' type='text/css' href='/css/jquery.rateyo.min.css'>
+  <link rel='stylesheet' type='text/css' href='/css/style.css'>
+  <link rel='stylesheet' type='text/css' href='/css/login.css'>
+  <link rel='stylesheet' type='text/css' href='/css/clientStyle.css'>
+</head>
+
+<body>
+
+    <div class="master-content">
+      <div class="container">
+        <div class="row justify-content-center align-items-center form-wrapper">
+          <div class="col-12">
+            <h1 class="logo">Vivid</h1>
+            <form action="/client/login" method="post" class="login-form">
+              <div class="form-header">
+                <h1>Login</h1>
+              </div>
+              <div class="fields">
+                <div class="input-row">
+                  <input class="text-input" type="username" id="username" name="username">
+                  <label class="text-input-label" for="username">Username</label>
+                </div>
+                <div class="input-row">
+                  <input class="text-input" type="password" id="password" name="password">
+                  <label class="text-input-label" for="password">Password</label>
+                </div>
+                <div class="input-row submit-row">
+                  <input type="submit" class="submit-form">
+                </div>
+                <div class="links">
+                  <a href="/client/register" class="navigation-link">Not a member yet?</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- *************************************************************************** -->
+  <script type='text/javascript' src='js/libs/jquery-3.3.1.min.js'></script>
+  <script type='text/javascript' src='js/libs/bootstrap.min.js'></script>
+  <script type='text/javascript' src='js/libs/jquery.rateyo.min.js'></script>
+  <script type='text/javascript' src='js/libs/TweenMax.min.js'></script>
+  <script type='text/javascript' src='js/login.js'></script>
+  <!-- *************************************************************************** -->
+
+</body>
+
+</html>

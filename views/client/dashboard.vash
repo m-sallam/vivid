@@ -1,0 +1,51 @@
+@html.extend('layout', function (model){
+  @html.block('content', function (model){ 
+    <div id="my_camera" style="display:none;"></div>
+    <input id="user" type="hidden" value="@JSON.stringify(model.currentUser)">
+
+    <div class="master-content clientUI">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="main-title">Hi I am V, How can I help you today?</h1>
+            <div class="recognized-text-cont">
+              <h3 class="recognized-text"></h3>
+            </div>
+            <div class="commands">
+              <div class="vivid-card-header">
+                <h1 class="section-title">Commands You can use</h1>
+              </div>
+              <div class="row command-row">
+                <div class="col-12 col-sm-6">
+                  <h3 class="command-name">Hey, What is this?</h3>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <h3 class="command-description">Get a caption for this image</h3>
+                </div>
+              </div>
+              <div class="row command-row">
+                <div class="col-12 col-sm-6">
+                  <h3 class="command-name">Hey, [Any question]</h3>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <h3 class="command-description">Use VQA</h3>
+                </div>
+              </div>
+              <div class="row command-row">
+                <div class="col-12 col-sm-6">
+                  <h3 class="command-name">Hey, [Sentence containing the word 'help']</h3>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <h3 class="command-description">Video chat a volunteer</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  })
+  @html.block('script', function (model){
+    <script type='text/javascript' src="/js/clientDashboard.js"></script>
+  })
+})

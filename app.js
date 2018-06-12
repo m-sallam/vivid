@@ -1,78 +1,59 @@
 const Koa = require('koa')
-const logger = require('koa-logger')
 const views = require('koa-views')
 const serve = require('koa-static')
 const koaBody = require('koa-body')
 const session = require('koa-session')
 const passport = require('koa-passport')
-const LocalStrategy = require('passport-local')
 const mongoose = require('mongoose')
 const path = require('path')
 const dotenv = require('dotenv')
 const app = new Koa()
 
-const router = require('./routes')
+const routers = require('./api/controllers')
 
-const User = require('./models/user')
+const sockets = require('./sockets')
 
-const sockets = require('./socket')
+const routesMiddleware = require('./middleware/routes')
 
 dotenv.config()
 
-mongoose.connect(process.env.DBURL, (err) => {
-  if (err) return err
-  console.log('connect to database - ', Date())
-})
-
-app.use(logger())
-
 app.use(koaBody({ multipart: true }))
-app.use(serve('./public'))
+app.use(serve('./assets'))
 app.use(views(path.join(__dirname, '/views'), {
   options: { settings: { views: path.join(__dirname, 'views') } },
   map: { 'vash': 'vash' },
   extension: 'vash'
 }))
 
-app.keys = ['some secret hurr']
+app.keys = [process.env.APPSECRET]
 app.use(session(app))
 app.use(passport.initialize())
 app.use(passport.session())
-passport.use(new LocalStrategy(User.authenticate()))
-passport.serializeUser(User.serializeUser())
-passport.deserializeUser(User.deserializeUser())
 
 sockets.volunteerIO.attach(app)
 sockets.clientIO.attach(app)
 sockets.vqaIO.attach(app)
+sockets.chatIO.attach(app)
 
-app.use(async (ctx, next) => {
+app.use(routesMiddleware.addCurrentUser)
+
+app.use(routers.metaRouter.routes())
+app.use(routers.metaRouter.allowedMethods())
+app.use(routers.clientRouter.routes())
+app.use(routers.clientRouter.allowedMethods())
+app.use(routers.volunteerRouter.routes())
+app.use(routers.volunteerRouter.allowedMethods())
+
+var start = async () => {
   try {
-    if (ctx.isAuthenticated()) {
-      let user = {
-        username: ctx.req.user.username,
-        email: ctx.req.user.email,
-        name: ctx.req.user.name,
-        country: ctx.req.user.country,
-        languages: ctx.req.user.languages,
-        type: ctx.req.user.type
-      }
-      ctx.state.currentUser = user
-    }
-
-    // flash message
-    ctx.state.flash = ctx.session.flash
-    ctx.session.flash = null
-    await next()
+    await mongoose.connect(process.env.DBURL)
+    console.log('connect to database')
+    await app.listen(process.env.PORT || 3000)
+    console.log('listining...')
   } catch (err) {
-    console.log('error')
     console.log(err)
-    ctx.body = err.message
+    process.abort()
   }
-})
+}
 
-app.use(router.routes())
-app.use(router.allowedMethods())
-
-app.listen(process.env.PORT || 3000)
-console.log('listining...')
+start()

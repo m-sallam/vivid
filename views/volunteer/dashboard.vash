@@ -1,0 +1,99 @@
+@html.extend('layout', function (model){
+  @html.block('content', function (model){ 
+    <input id="user" type="hidden" value="@JSON.stringify(model.currentUser)">
+
+    <div class="master-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <div class="generic-card profile-card">
+              <div class="vivid-card-header">
+                <h1 class="section-title">@model.currentUser.name</h1>
+              </div>
+              <div class="data">
+                <div class="profile-img">
+                  <img src="/img/generic-user.png" alt="John Doe Photo">
+                </div>
+                <p class="stats">You have helped <span>999</span> people! Keep it up!</p>
+                <div class="user-rating" data-rateyo-rating="0"></div>
+              </div>
+            </div>
+            <div class="gadgets">
+              <div class="gadget online-clients">
+                <div class="icon">
+                  <i class="fas fa-blind"></i>
+                </div>
+                <div class="data">
+                  <h3 class="number">999</h3>
+                  <p class="text">Online clients that share the same language as you</p>
+                </div>
+              </div>
+              <div class="gadget online-volunteers">
+                <div class="icon">
+                  <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="data">
+                  <h3 class="number">999</h3>
+                  <p class="text">Online Volunteers that share the same language as you</p>
+                </div>
+              </div>
+            </div>
+
+            
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="user-listing">
+              <div class="vivid-card-header">
+                <h1 class="section-title">Clients Available: </h1>
+              </div>
+              <div class="scroller-gradient"></div>
+              <div id="online-clients" class="users-scroller">
+              @{
+                if (model.requests && model.requests.length > 0){
+                  for (let request of model.requests) {
+                    <div class="user">
+                      <div class="user-img">
+                        <img draggable="false" src="/img/generic-user.png" alt="Generic User Icon">
+                      </div>
+                      <div class="user-info">
+                        <h3 class="user-name">@request.name
+                          <span class="user-country">@request.country</span>
+                        </h3>
+                        <h6 class="user-lang">
+                          <i class="fas fa-globe"></i> @request.languages</h6>
+                        <h6 class="user-date">
+                          <i class="fas fa-clock"></i> 01/01/2019 - 4:30PM GMT+2</h6>
+                      </div>
+                      <div class="hover-board">
+                        <a href="/chat/@request.socketId.split('#')[1]#1" class="connect-btn"><i class="fas fa-plus-circle"></i> Connect</a>
+                      </div>
+                    </div>
+                  }
+                } else {
+                  <label class="empty-label">No clients requesting help at the moment</label>
+                }            
+              }
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="known-people">
+              <div class="user-listing">
+                <div class="vivid-card-header">
+                  <h1 class="section-title">Notifications: </h1>
+                </div>
+                <div class="scroller-gradient"></div>
+                <div class="users-scroller">
+                  <label class="empty-label">No new notifications</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  })
+  @html.block('script', function (model){
+    <script type='text/javascript' src="/js/volunteerDashboard.js"></script>
+  })
+})

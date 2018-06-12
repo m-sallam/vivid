@@ -1,53 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
-  <head>
-    <title>Vivid</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css">
-  </head>
+<head>
+  <meta charset='UTF-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <meta name='description' content=''>
+  <meta name='author' content=''>
 
-  <body>
-    <div class="ui container page">
-      <div class="ui menuList horizontal list">
-        @{
-          if (model.user) {
-            <a class="item" href="/logout">Logout</a>
-          } else {
-            <a class="item" href="/register">Register</a>
-            <a class="item" href="/login">Login</a>
-          }
-        }
+  <title>Vivid</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet">
+  <link rel='stylesheet' type='text/css' href='/css/fontawesome-all.min.css'>
+  <link rel='stylesheet' type='text/css' href='/css/bootstrap.min.css'>
+  <link rel='stylesheet' type='text/css' href='/css/jquery.rateyo.min.css'>
+  <link rel='stylesheet' type='text/css' href='/css/style.css'>
+  <link rel='stylesheet' type='text/css' href='/css/login.css'>
+  <link rel='stylesheet' type='text/css' href='/css/clientStyle.css'>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-12">
+          <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="#!">Vivid</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/">Dashboard</a>
+                </li>
+              </ul>
+              <ul class="navbar-nav ml-auto nav-sp-btns">
+                <li class="nav-item">
+                  <a href="/logout" class="nav-link logout">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
       </div>
-      <br/>
-      @{
-        if (model.flash) {
-          if (model.flash.type === 'error') {
-            <div class="ui container">
-              <div class="ui negative floating message">
-                  @model.flash.message
-              </div>
-            </div>
-            <br/>
-          } else {
-            <div class="ui container">
-              <div class="ui success floating message">@model.flash.message</div>
-            </div>
-            <br/>
-          }
-          
-        } 
-      }
-
-       @html.block('content')
-
     </div>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
-    <script src="/js/socket.io.slim.js"></script>
-    <script src="/js/artyom.window.min.js"></script>
-    <script src="/js/index.js"></script>
-    @html.block('script')
-  </body>
+  </div>
+
+  @html.block('content')
+
+  <!-- *************************************************************************** -->
+  <script type='text/javascript' src='/js/libs/jquery-3.3.1.min.js'></script>
+  <script type='text/javascript' src='/js/libs/bootstrap.min.js'></script>
+  <script type='text/javascript' src='/js/libs/jquery.rateyo.min.js'></script>
+  <script type='text/javascript' src='/js/libs/jquery.nicescroll.min.js'></script>
+  <script type='text/javascript' src='/js/libs/typeit.min.js'></script>
+  <script type='text/javascript' src='/js/libs/selectize.min.js'></script>
+  <script type='text/javascript' src='/js/libs/TweenMax.min.js'></script>
+  <script type='text/javascript' src="/js/libs/socket.io.slim.js"></script>
+  <script type='text/javascript' src="/js/libs/artyom.window.min.js"></script>
+  <script type='text/javascript' src="/js/libs/simplepeer.min.js"></script>
+  <script type='text/javascript' src="/js/libs/webcam.min.js"></script>
+  <script type='text/javascript' src='/js/script.js'></script>
+  @html.block('script')
+  <!-- *************************************************************************** -->
+
+</body>
 
 </html>
