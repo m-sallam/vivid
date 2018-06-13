@@ -104,7 +104,7 @@ chatIO.on('join', async ctx => {
 })
 
 chatIO.on('rejoin', async ctx => {
-  ctx.socket.broadcast.to(ctx.data).emit('firstParty')
+  chatIO.to(ctx.data).emit('startStream')
 })
 
 chatIO.on('RTCSignal', async ctx => {

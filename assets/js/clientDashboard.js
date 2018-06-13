@@ -31,8 +31,6 @@ $(document).ready(function () {
   // voice commands
   const v = new Artyom()
 
-  v.say('Hi, say hey before your command')
-
   var command = {
     indexes: ['hey *'],
     smart: true,
@@ -61,14 +59,16 @@ $(document).ready(function () {
     typeitInstance.type(recognized)
   })
 
-  setTimeout(function () {
-    v.initialize({
-      continuous: true,
-      lang: 'en-US',
-      listen: true
-      // debug: true
-    })
-  }, 3000)
+  v.say('Hi, say hey before your command', {
+    onEnd: function () {
+      v.initialize({
+        continuous: true,
+        lang: 'en-US',
+        listen: true
+        // debug: true
+      })
+    }
+  })
 
   // setTimeout(function () {
   //   v.simulateInstruction('hey help')

@@ -8,14 +8,13 @@ $('document').ready(function () {
   socket.on('connect', function () {
     socket.emit('join', roomId)
   })
-  socket.on('firstParty', function () {
-    console.log('first party')
-    setMedia()
-  })
 
   socket.on('secondParty', function () {
     console.log('second party')
     socket.emit('rejoin', roomId)
+  })
+
+  socket.on('startStream', function () {
     setMedia()
   })
 
@@ -69,7 +68,7 @@ $('document').ready(function () {
     })
 
     peer.on('close', function () {
-      window.history.back()
+      window.location = '/client/dashboard'
     })
   }
 
