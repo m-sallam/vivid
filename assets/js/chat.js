@@ -16,11 +16,11 @@ $('document').ready(function () {
   socket.on('startStream', function () {
     setTimeout(function () {
       navigator.getUserMedia({ video: { facingMode: 'environment' }, audio: true }, gotMedia, function () { })
-    }, 3000)
+    }, 2000)
   })
 
   function gotMedia (stream) {
-    var peer = new SimplePeer({ initiator: window.location.hash === '#1', stream: stream })
+    var peer = new SimplePeer({ initiator: window.location.hash === '#1', stream: stream, trickle: false })
 
     peer.on('error', function (err) { console.log('error', err) })
 
