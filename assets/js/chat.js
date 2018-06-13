@@ -20,7 +20,7 @@ $('document').ready(function () {
   })
 
   function gotMedia (stream) {
-    var peer = new SimplePeer({ initiator: window.location.hash === '#1', stream: stream, trickle: false })
+    var peer = new SimplePeer({ initiator: window.location.hash === '#1', stream: stream })
 
     peer.on('error', function (err) { console.log('error', err) })
 
