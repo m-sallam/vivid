@@ -19,31 +19,32 @@ $('document').ready(function () {
   })
 
   function setMedia () {
-    navigator.mediaDevices.enumerateDevices()
-      .then(function (devices) {
-        // Get all cameras on the device
-        var cameras = devices.filter(function (device) {
-          return device.kind === 'videoinput'
-        })
+    navigator.getUserMedia({ video: { facingMode: 'environment' }, audio: true }, gotMedia, function () { })
+    // navigator.mediaDevices.enumerateDevices()
+    //   .then(function (devices) {
+    //     // Get all cameras on the device
+    //     var cameras = devices.filter(function (device) {
+    //       return device.kind === 'videoinput'
+    //     })
 
-        cameras.forEach(function (camera) {
-          // Search back camera on the device
-          if (camera.label.toLowerCase().search('back') > -1) {
-            options = { video: { facingMode: { exact: 'environment' } }, audio: true }
-          }
-        })
+    //     cameras.forEach(function (camera) {
+    //       // Search back camera on the device
+    //       if (camera.label.toLowerCase().search('back') > -1) {
+    //         options = { video: { facingMode: { exact: 'environment' } }, audio: true }
+    //       }
+    //     })
 
-        // If we don't find the back camera we use last camera in the list
-        if (!options && cameras.length) {
-          options = { video: true, audio: true }
-        }
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
-      .finally(function () {
-        navigator.getUserMedia(options, gotMedia, function () { })
-      })
+    //     // If we don't find the back camera we use last camera in the list
+    //     if (!options && cameras.length) {
+    //       options = { video: true, audio: true }
+    //     }
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error)
+    //   })
+    //   .finally(function () {
+    //     navigator.getUserMedia(options, gotMedia, function () { })
+    //   })
   }
 
   function gotMedia (stream) {

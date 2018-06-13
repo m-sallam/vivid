@@ -16,8 +16,11 @@ $(document).ready(function () {
   })
 
   socket.on('assistance', function (data) {
-    v.say('transfering you to a volunteer')
-    window.location = '/chat/' + data.id + '?userType=client'
+    v.say('transfering you to a volunteer', {
+      onEnd: function () {
+        window.location = '/chat/' + data.id + '?userType=client'
+      }
+    })
   })
 
   socket.on('description', function (data) {
