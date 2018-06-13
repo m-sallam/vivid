@@ -24,7 +24,7 @@
                   <i class="fas fa-blind"></i>
                 </div>
                 <div class="data">
-                  <h3 id="clientsNumber" class="number">@model.clients.length</h3>
+                  <h3 id="clientsNumber" class="number">@model.clientsNumber</h3>
                   <p class="text">Online clients that share the same language as you</p>
                 </div>
               </div>
@@ -33,7 +33,7 @@
                   <i class="fas fa-hands-helping"></i>
                 </div>
                 <div class="data">
-                  <h3 id="volunteersNumber" class="number">@model.volunteers.length</h3>
+                  <h3 id="volunteersNumber" class="number">@model.volunteersNumber</h3>
                   <p class="text">Online Volunteers that share the same language as you</p>
                 </div>
               </div>

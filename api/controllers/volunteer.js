@@ -61,5 +61,5 @@ router.post('/volunteer/register', async ctx => {
 router.get('/volunteer/dashboard', async ctx => {
   if (!ctx.isAuthenticated()) ctx.redirect('/')
   if (ctx.req.user.type === 'client') ctx.redirect('/client/dashboard')
-  await ctx.render('volunteer/dashboard', { requests: getRequests(), clients: getClients(), volunteers: getVolunteers() })
+  await ctx.render('volunteer/dashboard', { requests: getRequests(), clientsNumber: getClients().length, volunteersNumber: getVolunteers().length - 1 })
 })

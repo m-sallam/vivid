@@ -36,6 +36,6 @@ $(document).ready(function () {
     $('#clientsNumber').html(data.clients.length)
   })
   socket.on('updateVolunteers', function (data) {
-    $('#volunteersNumber').html(data.volunteers.length)
+    $('#volunteersNumber').html(data.volunteers.length - 1)
   })
 })
