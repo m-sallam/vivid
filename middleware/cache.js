@@ -25,6 +25,14 @@ var removeDisconnectedVolunteer = function (id) {
   cache.set('onlineVolunteers', onlineVolunteers)
 }
 
+var getVolunteers = function () {
+  let volunteers = cache.get('onlineVolunteers')
+  if (volunteers === undefined) {
+    volunteers = []
+  }
+  return volunteers
+}
+
 var insertConnectedClient = function (user) {
   let onlineClients = cache.get('onlineClients')
   if (onlineClients === undefined || onlineClients === null) {
@@ -47,6 +55,14 @@ var removeDisconnectedClient = function (id) {
     }
   }
   cache.set('onlineClients', onlineClients)
+}
+
+var getClients = function () {
+  let clients = cache.get('onlineClients')
+  if (clients === undefined) {
+    clients = []
+  }
+  return clients
 }
 
 var insertRequest = function (user) {
@@ -94,5 +110,7 @@ module.exports = {
   removeDisconnectedClient: removeDisconnectedClient,
   insertRequest: insertRequest,
   removeRequest: removeRequest,
-  getRequests: getRequests
+  getRequests: getRequests,
+  getVolunteers: getVolunteers,
+  getClients: getClients
 }

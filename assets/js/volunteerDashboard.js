@@ -32,4 +32,10 @@ $(document).ready(function () {
     }
     $('#online-clients').html(html)
   })
+  socket.on('updateClients', function (data) {
+    $('#clientsNumber').html(data.clients.length)
+  })
+  socket.on('updateVolunteers', function (data) {
+    $('#volunteersNumber').html(data.volunteers.length)
+  })
 })

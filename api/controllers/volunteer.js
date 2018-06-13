@@ -1,7 +1,7 @@
 const Router = require('koa-router')
 const User = require('../models/user')
 const router = module.exports = new Router()
-const { getRequests } = require('../../middleware/cache')
+const { getRequests, getClients, getVolunteers } = require('../../middleware/cache')
 
 router.get('/volunteer/login', async ctx => {
   if (ctx.isAuthenticated()) ctx.redirect('/')
@@ -61,5 +61,5 @@ router.post('/volunteer/register', async ctx => {
 router.get('/volunteer/dashboard', async ctx => {
   if (!ctx.isAuthenticated()) ctx.redirect('/')
   if (ctx.req.user.type === 'client') ctx.redirect('/client/dashboard')
-  await ctx.render('volunteer/dashboard', { requests: getRequests() })
+  await ctx.render('volunteer/dashboard', { requests: getRequests(), clients: getClients(), volunteers: getVolunteers() })
 })

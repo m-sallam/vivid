@@ -6,7 +6,7 @@ const volunteerIO = new IO({ namespace: 'volunteer' })
 const clientIO = new IO({ namespace: 'client' })
 const vqaIO = new IO({ namespace: 'vqa-model' })
 const chatIO = new IO({ namespace: 'chat' })
-const { insertConnectedVolunteer, removeDisconnectedVolunteer, insertConnectedClient, removeDisconnectedClient, insertRequest, removeRequest, getRequests } = require('../middleware/cache')
+const { insertConnectedVolunteer, removeDisconnectedVolunteer, insertConnectedClient, removeDisconnectedClient, insertRequest, removeRequest, getRequests, getClients, getVolunteers } = require('../middleware/cache')
 
 volunteerIO.on('connection', async ctx => {
   console.log('Volunteer connected -', Date())
@@ -16,11 +16,13 @@ volunteerIO.on('initialize', async ctx => {
   var user = ctx.data.user
   user.socketId = ctx.socket.id
   insertConnectedVolunteer(user)
+  volunteerIO.broadcast('updateVolunteers', { volunteers: getVolunteers() })
 })
 
 volunteerIO.on('disconnect', async ctx => {
   removeDisconnectedVolunteer(ctx.socket.id)
   console.log('Volunteer disconnected -', Date())
+  volunteerIO.broadcast('updateVolunteers', { volunteers: getVolunteers() })
 })
 
 // ------------------ client sockets ----------------------------
@@ -33,12 +35,14 @@ clientIO.on('initialize', async ctx => {
   var user = ctx.data.user
   user.socketId = ctx.socket.id
   insertConnectedClient(user)
+  volunteerIO.broadcast('updateClients', { clients: getClients() })
 })
 
 clientIO.on('disconnect', async ctx => {
   removeDisconnectedClient(ctx.socket.id)
   removeRequest(ctx.socket.id)
   console.log('client disconnected - ', Date())
+  volunteerIO.broadcast('updateClients', { clients: getClients() })
 })
 
 clientIO.on('requestAssistance', async ctx => {
