@@ -541,6 +541,7 @@ URI     : https://colorlib.com
         </small>
     </footer>
 
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
     <!-- jQuery and Bootstrap -->
     <script src="/js/libs/jquery-3.3.1.min.js"></script>
     <script src="/js/libs/bootstrap.bundle.min.js"></script>
