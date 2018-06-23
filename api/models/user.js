@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const passportLocalMongoose = require('passport-local-mongoose')
-const passport = require('passport')
+const passport = require('koa-passport')
 const LocalStrategy = require('passport-local')
 const Schema = mongoose.Schema
 
