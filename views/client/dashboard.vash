@@ -1,6 +1,7 @@
 @html.extend('layout', function (model){
   @html.block('content', function (model){ 
-    <div id="my_camera" style="display:none;"></div>
+    <!-- <div id="my_camera" style="display:none;"></div> -->
+    <div id="my_camera"></div>
     <input id="user" type="hidden" value="@JSON.stringify(model.currentUser)">
 
     <div class="master-content clientUI">
