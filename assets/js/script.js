@@ -6,12 +6,6 @@
 //   var userCards = $('.user-listing .user')
 // }
 
-window.addEventListener('load', function () {
-  setTimeout(function () {
-    window.scrollTo(0, 1)
-  }, 0)
-})
-
 $(document).ready(function () {
   $('.nav-item')
     .hover(function () {
