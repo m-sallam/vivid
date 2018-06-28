@@ -55,7 +55,7 @@ clientIO.on('requestAssistance', async ctx => {
 clientIO.on('requestDescription', async ctx => {
   try {
     await save(ctx.data.pic, 'pic.jpg')
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']})
     const page = await browser.newPage()
     await page.setRequestInterception(true)
     page.on('request', request => {
