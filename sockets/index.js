@@ -58,7 +58,7 @@ clientIO.on('requestDescription', async ctx => {
     const horseman = new Horseman({ loadImages: false })
     horseman
       .open('https://www.captionbot.ai')
-      .upload('#idImageUploadField', path.join(__dirname, 'pic.png'))
+      .upload('#idImageUploadField', path.join(__dirname, 'pic.jpg'))
       .waitFor({
         fn: function waitForSelectorCount (selector) {
           return $(selector).text().length > 30
