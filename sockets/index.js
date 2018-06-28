@@ -54,7 +54,7 @@ clientIO.on('requestAssistance', async ctx => {
 
 clientIO.on('requestDescription', async ctx => {
   try {
-    await save(ctx.data.pic, 'pic.jpg')
+    await save(ctx.data.pic, 'pic.jpeg')
     const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']})
     const page = await browser.newPage()
     await page.setRequestInterception(true)
@@ -63,7 +63,7 @@ clientIO.on('requestDescription', async ctx => {
     })
     await page.goto('https://www.captionbot.ai')
     const uploadField = await page.$('#idImageUploadField')
-    await uploadField.uploadFile(path.join(__dirname, 'pic.jpg'))
+    await uploadField.uploadFile(path.join(__dirname, 'pic.jpeg'))
     await page.waitFor(() => {
       return $('#captionLabel').text().length > 30
     })
