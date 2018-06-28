@@ -70,6 +70,7 @@ clientIO.on('requestDescription', async ctx => {
       .text('#captionLabel')
       .then((out) => {
         console.log(out, Date())
+        out = out.replace('i think', '')
         ctx.socket.emit('description', { description: out })
       })
       .close()
