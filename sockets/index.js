@@ -54,7 +54,7 @@ clientIO.on('requestAssistance', async ctx => {
 
 clientIO.on('requestDescription', async ctx => {
   try {
-    await save(ctx.data.pic, 'pic.png')
+    await save(ctx.data.pic, 'pic.jpg')
     const horseman = new Horseman({ loadImages: false })
     horseman
       .open('https://www.captionbot.ai')
