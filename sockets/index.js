@@ -1,7 +1,7 @@
 const IO = require('koa-socket-2')
 const save = require('save-file')
 const path = require('path')
-const Horseman = require('node-horseman')
+const puppeteer = require('puppeteer')
 const volunteerIO = new IO({ namespace: 'volunteer' })
 const clientIO = new IO({ namespace: 'client' })
 const vqaIO = new IO({ namespace: 'vqa-model' })
@@ -55,25 +55,25 @@ clientIO.on('requestAssistance', async ctx => {
 clientIO.on('requestDescription', async ctx => {
   try {
     await save(ctx.data.pic, 'pic.jpg')
-    const horseman = new Horseman({ loadImages: false })
-    horseman
-      .open('https://www.captionbot.ai')
-      .upload('#idImageUploadField', path.join(__dirname, 'pic.jpg'))
-      .waitFor({
-        fn: function waitForSelectorCount (selector) {
-          return $(selector).text().length > 30
-        },
-        args: ['#captionLabel'],
-        value: true,
-        timeout: 20000
-      })
-      .text('#captionLabel')
-      .then((out) => {
-        console.log(out, Date())
-        out = out.replace('i think', '')
-        ctx.socket.emit('description', { description: out })
-      })
-      .close()
+    const browser = await puppeteer.launch()
+    const page = await browser.newPage()
+    await page.setRequestInterception(true)
+    page.on('request', request => {
+      if (request.resourceType() === 'image') { request.abort() } else { request.continue() }
+    })
+    await page.goto('https://www.captionbot.ai')
+    const uploadField = await page.$('#idImageUploadField')
+    await uploadField.uploadFile(path.join(__dirname, 'pic.jpg'))
+    await page.waitFor(() => {
+      return $('#captionLabel').text().length > 30
+    })
+    let captionLabel = await page.$('#captionLabel')
+    let captionLabelInnerText = await captionLabel.getProperty('innerText')
+    let out = await captionLabelInnerText.jsonValue()
+    out = out.replace('I think it\'s ', '')
+    console.log(out)
+    ctx.socket.emit('description', { description: out })
+    await browser.close()
   } catch (err) {
     console.log(err)
     ctx.socket.emit('description', { description: 'sorry, an error occured, try again' })

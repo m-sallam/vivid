@@ -21,13 +21,10 @@
     "koa-views": "^6.1.4",
     "mongoose": "^5.0.14",
     "node-cache": "^4.2.0",
-    "node-horseman": "^3.3.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.0",
-    "phantom": "^4.0.12",
-    "phantomjs-prebuilt": "^2.1.16",
+    "puppeteer": "^1.5.0",
     "save-file": "^1.2.0",
-    "socket.io-stream": "^0.9.1",
     "vash": "^0.12.4"
   }
 }
