@@ -8,15 +8,6 @@ const vqaIO = new IO({ namespace: 'vqa-model' })
 const chatIO = new IO({ namespace: 'chat' })
 const { insertConnectedVolunteer, removeDisconnectedVolunteer, insertConnectedClient, removeDisconnectedClient, insertRequest, removeRequest, getRequests, getClients, getVolunteers } = require('../middleware/cache')
 
-var browser
-
-let launchBrowser = async () => {
-  browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']})
-  console.log('chromium lanuched')
-}
-
-launchBrowser()
-
 volunteerIO.on('connection', async ctx => {
   console.log('Volunteer connected -', Date())
 })
@@ -64,10 +55,17 @@ clientIO.on('requestAssistance', async ctx => {
 clientIO.on('requestDescription', async ctx => {
   try {
     await save(ctx.data.pic, 'pic.jpeg')
+    const browser = await puppeteer.launch({headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox',
+        '--proxy-server="direct://"', '--proxy-bypass-list=*']})
     const page = await browser.newPage()
     await page.setRequestInterception(true)
-    page.on('request', request => {
-      if (request.resourceType() === 'image') { request.abort() } else { request.continue() }
+    page.on('request', (request) => {
+      if (['image', 'stylesheet', 'font'].indexOf(request.resourceType()) !== -1) {
+        request.abort()
+      } else {
+        request.continue()
+      }
     })
     await page.goto('https://www.captionbot.ai')
     const uploadField = await page.$('#idImageUploadField')
