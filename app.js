@@ -49,7 +49,7 @@ var start = async () => {
     await mongoose.connect(process.env.DBURL)
     console.log('connect to database')
     await app.listen(process.env.PORT || 3000)
-    console.log('listining...')
+    console.log('listening...')
   } catch (err) {
     console.log(err)
     process.abort()

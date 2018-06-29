@@ -8,6 +8,15 @@ const vqaIO = new IO({ namespace: 'vqa-model' })
 const chatIO = new IO({ namespace: 'chat' })
 const { insertConnectedVolunteer, removeDisconnectedVolunteer, insertConnectedClient, removeDisconnectedClient, insertRequest, removeRequest, getRequests, getClients, getVolunteers } = require('../middleware/cache')
 
+var browser
+
+let launchBrowser = async () => {
+  browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']})
+  console.log('chromium lanuched')
+}
+
+launchBrowser()
+
 volunteerIO.on('connection', async ctx => {
   console.log('Volunteer connected -', Date())
 })
@@ -55,7 +64,6 @@ clientIO.on('requestAssistance', async ctx => {
 clientIO.on('requestDescription', async ctx => {
   try {
     await save(ctx.data.pic, 'pic.jpeg')
-    const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']})
     const page = await browser.newPage()
     await page.setRequestInterception(true)
     page.on('request', request => {
