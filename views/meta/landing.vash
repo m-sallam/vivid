@@ -64,8 +64,8 @@ URI     : https://colorlib.com
 
     <header class="bg-gradient" id="home">
         <div class="container mt-5">
-            <h1>Mobile App Landing Page Template</h1>
-            <p class="tagline">The one and only solution for any kind of mobila app landing needs. Just change the screenshots and texts and you are good to go. </p>
+            <h1>Blind Assisting Application</h1>
+            <p class="tagline">Application provides Artificial vision for blind people using either computer vision or a human assistance. </p>
         </div>
         <div class="img-holder mt-3"><img src="/img/iphonex.png" alt="phone" class="img-fluid"></div>
     </header>
@@ -119,38 +119,41 @@ URI     : https://colorlib.com
                                 <span class="ti-face-smile gradient-fill ti-3x mr-3"></span>
                                 <div class="media-body">
                                     <h4 class="card-title">Simple</h4>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque </p>
+                                    <p class="card-text">Users do not need technical experience to use Vivid, just use your voice to control it.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-12 col-lg-4">
                     <div class="card features">
                         <div class="card-body">
                             <div class="media">
                                 <span class="ti-settings gradient-fill ti-3x mr-3"></span>
                                 <div class="media-body">
-                                    <h4 class="card-title">Customize</h4>
+                                    <h4 class="card-title">Voice recognition</h4>
                                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-12 col-lg-4">
                     <div class="card features">
                         <div class="card-body">
                             <div class="media">
                                 <span class="ti-lock gradient-fill ti-3x mr-3"></span>
                                 <div class="media-body">
-                                    <h4 class="card-title">Secure</h4>
+                                    <h4 class="card-title">Cross-platform</h4>
                                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
         </div>
@@ -158,25 +161,7 @@ URI     : https://colorlib.com
 
 
     </div>
-    <!-- // end .section -->
-    <div class="section">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-6">
-                    <div class="box-icon"><span class="ti-mobile gradient-fill ti-3x"></span></div>
-                    <h2>Discover our App</h2>
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati vel exercitationem eveniet vero maxime ratione </p>
-                    <a href="#" class="btn btn-primary">Read more</a>
-                </div>
-            </div>
-            <div class="perspective-phone">
-                <img src="/img/perspective.png" alt="perspective phone" class="img-fluid">
-            </div>
-        </div>
-
-    </div>
-    <!-- // end .section -->
 
 
     <div class="section light-bg">
