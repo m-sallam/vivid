@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d2f930d-0483-4e4b-9826-5e5d837fc16e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/meta/chat.vash" afterPath="$PROJECT_DIR$/views/meta/chat.vash" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/client/dashboard.vash" afterPath="$PROJECT_DIR$/views/client/dashboard.vash" />
     </list>
     <ignored path="master.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,11 +34,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chat.vash" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chat.vash" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/meta/chat.vash">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="69">
               <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard.vash" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/client/dashboard.vash">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -65,6 +75,7 @@
         <option value="$PROJECT_DIR$/views/layout.vash" />
         <option value="$PROJECT_DIR$/views/meta/landing.vash" />
         <option value="$PROJECT_DIR$/views/meta/chat.vash" />
+        <option value="$PROJECT_DIR$/views/client/dashboard.vash" />
       </list>
     </option>
   </component>
@@ -309,12 +320,12 @@
       <option name="presentableId" value="Default" />
       <updated>1530449998200</updated>
       <workItem from="1530450002899" duration="2691000" />
-      <workItem from="1530482583029" duration="6742000" />
+      <workItem from="1530482583029" duration="7380000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9433000" />
+    <option name="totallyTimeSpent" value="10071000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -415,6 +426,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
           <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/client/dashboard.vash">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
           <folding />
         </state>
       </provider>
