@@ -1,7 +1,7 @@
 @html.extend('layout', function (model){
   @html.block('content', function (model){ 
    <div class="container mt-5">
-        <video autoplay controls></video>
+        <video width="100%" height="600" autoplay controls></video>
    </div>
   })
   @html.block('script', function (model){

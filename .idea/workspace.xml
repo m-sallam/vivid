@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d2f930d-0483-4e4b-9826-5e5d837fc16e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/img/Screenshot_2018-06-26-15-27-05-314_com.android.chrome.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/img/generic-user.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/img/screen1.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/img/screen2.jpg" afterPath="$PROJECT_DIR$/assets/img/screen2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/img/screen3.jpg" afterPath="$PROJECT_DIR$/assets/img/screen3.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout.vash" afterPath="$PROJECT_DIR$/views/layout.vash" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/meta/chat.vash" afterPath="$PROJECT_DIR$/views/meta/chat.vash" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/meta/landing.vash" afterPath="$PROJECT_DIR$/views/meta/landing.vash" />
     </list>
     <ignored path="master.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/views/meta/chat.vash">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="69">
-              <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+              <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -316,12 +309,12 @@
       <option name="presentableId" value="Default" />
       <updated>1530449998200</updated>
       <workItem from="1530450002899" duration="2691000" />
-      <workItem from="1530482583029" duration="6111000" />
+      <workItem from="1530482583029" duration="6742000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8802000" />
+    <option name="totallyTimeSpent" value="9433000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -421,7 +414,7 @@
     <entry file="file://$PROJECT_DIR$/views/meta/chat.vash">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
-          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+          <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
           <folding />
         </state>
       </provider>
