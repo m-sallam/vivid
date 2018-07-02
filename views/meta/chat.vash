@@ -1,6 +1,8 @@
 @html.extend('layout', function (model){
   @html.block('content', function (model){ 
-   <video autoplay></video>
+   <div class="container mt-5">
+        <video autoplay controls></video>
+   </div>
   })
   @html.block('script', function (model){
     <script src="/js/chat.js"></script>
